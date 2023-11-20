@@ -5,7 +5,7 @@ const Loginmini = ({ setLogsign }) => {
     setLogsign(true);
   };
   return (
-    <div className="flex flex-col justify-center w-[384px] m-auto mt-[40%] gap-10">
+    <div className="flex flex-col justify-center w-[384px] m-auto mt-[25%] gap-10">
       <div className="flex justify-center gap-2 p-[5.4px]">
         <img src="/geldlogo.svg" className=" cursor-pointer" />
         <img src="/geld.svg" className=" cursor-pointer" />

@@ -5,7 +5,7 @@ const Signup = ({ setLogsign }) => {
     setLogsign(false);
   };
   return (
-    <div className="flex flex-col justify-center w-[384px] m-auto mt-[40%] gap-10">
+    <div className="flex flex-col justify-center w-[384px] mt-[25%] m-auto gap-10">
       <div className="flex justify-center gap-2 p-[5.4px]">
         <img src="/geldlogo.svg" className=" cursor-pointer" />
         <img src="/geld.svg" className=" cursor-pointer" />
@@ -28,12 +28,12 @@ const Signup = ({ setLogsign }) => {
           className="input input-bordered w-full bg-slate-100 "
         />
         <input
-          type="text"
+          type="password"
           placeholder="Password"
           className="input input-bordered w-full bg-slate-100"
         />
         <input
-          type="text"
+          type="password"
           placeholder="Re-password"
           className="input input-bordered w-full bg-slate-100"
         />

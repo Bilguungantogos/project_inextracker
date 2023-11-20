@@ -28,7 +28,7 @@ const Stepone = () => {
           Your base currency should be the one you use most often. All
           transaction in other currencies will be calculated based on this one
         </p>
-        <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full mt-8 font-normal">
+        <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full mt-8 font-normal text-[20px]">
           Confirm
         </button>
       </div>

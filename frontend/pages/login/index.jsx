@@ -8,8 +8,8 @@ const login = () => {
   return (
     <div className="flex">
       <div className="bg-white w-full h-screen">
-        {!logsign && <Loginmini logsign={logsign} setLogsign={setLogsign} />}
-        {logsign && <Signup logsign={logsign} setLogsign={setLogsign} />}
+        {!logsign && <Loginmini setLogsign={setLogsign} />}
+        {logsign && <Signup setLogsign={setLogsign} />}
       </div>
       <div className="bg-[#0166FF] w-full h-screen"></div>
     </div>

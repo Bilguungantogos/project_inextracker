@@ -1,6 +1,6 @@
 import React from "react";
 
-const Steptwo = () => {
+const Stepthree = () => {
   return (
     <div className="flex flex-col items-center mt-10">
       <div className="flex flex-col gap-12 mb-[142px]">
@@ -11,23 +11,19 @@ const Steptwo = () => {
         <ul className="steps w-60">
           <li className="step step-primary">Currency</li>
           <li className="step step-primary">Balance</li>
-          <li className="step">Finish</li>
+          <li className="step step-primary">Finish</li>
         </ul>
       </div>
       <div className="flex flex-col items-center gap-3 w-[384px]">
-        <img src="/balance.png" className="w-12 h-12"></img>
-        <p className="text-2xl font-semibold">Set up your cash Balance</p>
+        <img src="/goodjob.png" className="w-12 h-12"></img>
+        <p className="text-2xl font-semibold">Good Job!</p>
         <div className="w-full">
-          <input
-            type="text"
-            placeholder="Email"
-            className="input input-bordered w-full bg-slate-100"
-          />
-          <p className="text-xs font-normal text-slate-500 my-4">
-            How much cash do you have in your wallet?
+          <p className="text-[16px] text-center font-normal text-slate-500 my-4">
+            Your very first account has been created. Now continue to dashboard
+            and start tracking
           </p>
-          <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full m-2 font-normal">
-            Confirm
+          <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full m-2 font-normal text-[20px]">
+            Go to Dashboard
           </button>
         </div>
       </div>
@@ -35,4 +31,4 @@ const Steptwo = () => {
   );
 };
 
-export default Steptwo;
+export default Stepthree;

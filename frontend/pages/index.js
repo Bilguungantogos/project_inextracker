@@ -1,13 +1,11 @@
-import Loginmini from "../components/Loginmini";
-import Signup from "../components/signup";
-import { useState, useEffect } from "react";
-import Loading from "../components/Loading";
-import Steptwo from "@/components/Steptwo";
+import Cards from "@/components/Cards";
+import Charts from "@/components/Charts";
 
 export default function Home() {
   return (
-    <main className="h-screen">
-      <Steptwo />
+    <main className="h-screen px-[120px] pt-8 bg-[#F3F4F6]">
+      <Cards />
+      <Charts />
     </main>
   );
 }
