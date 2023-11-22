@@ -1,14 +1,14 @@
 import React from "react";
 
-const Piechartinfo = ({ piedata }) => {
+const Piechartinfo = ({ data }) => {
   return (
-    <div className="flex  items-center justify-between w-full">
-      <div className="flex gap-1">
-        <img src="./dots/bluedot.svg"></img>
-        <p>{piedata.exname}</p>
+    <div className="flex  items-center justify-between w-full mb-4">
+      <div className="flex items-center gap-1 w-10">
+        <img src={data.dotcolorsrc} className="w-3 h-3"></img>
+        <p>{data.exname}</p>
       </div>
-      <p>5000000</p>
-      <p>15.50%</p>
+      <p className="w-8">{data.value}</p>
+      <p className="w-8">{data.percent}</p>
     </div>
   );
 };

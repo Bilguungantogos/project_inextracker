@@ -33,49 +33,49 @@ const Piechart = () => {
   };
   const piedata = [
     {
-      dotcolorsrc: "./bluedot",
+      dotcolorsrc: "./dots/bluedot.svg",
       exname: "Bills",
       value: 5000000,
       percent: "15.50%",
     },
     {
-      dotcolorsrc: "./bluedot",
+      dotcolorsrc: "./dots/pinkdot.svg",
       exname: "Food",
       value: 5000000,
       percent: "15.50%",
     },
     {
-      dotcolorsrc: "./bluedot",
+      dotcolorsrc: "./dots/lightbrown.svg",
       exname: "Shopping",
       value: 5000000,
       percent: "15.50%",
     },
     {
-      dotcolorsrc: "./bluedot",
+      dotcolorsrc: "./dots/aqua.svg",
       exname: "Insurance",
       value: 5000000,
       percent: "15.50%",
     },
     {
-      dotcolorsrc: "./bluedot",
+      dotcolorsrc: "./dots/orange.svg",
       exname: "Clothing",
       value: 5000000,
       percent: "15.50%",
     },
   ];
   return (
-    <div className="w-[588px] bg-white px-6">
+    <div className="w-[588px] bg-white px-6 rounded-[10px]">
       <div className="flex justify-between items-center">
         <h2 className="px-6 py-4">Income - Expense</h2>
         <p>Jun 1 - Nov 30</p>
       </div>
-      <div className="flex items-center py-8">
-        <div className="w-[156px]">
+      <div className="flex items-center py-8 px-6 gap-[47px]">
+        <div className="w-[156px] h-[156px]">
           <Doughnut data={data} options={options} />
         </div>
         <div className="flex flex-col w-full ml-4">
-          {piedata.map(() => {
-            return <Piechartinfo piedata={piedata} />;
+          {piedata.map((data) => {
+            return <Piechartinfo data={data} />;
           })}
         </div>
       </div>

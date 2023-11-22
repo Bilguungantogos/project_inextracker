@@ -57,7 +57,7 @@ const Barchart = () => {
   });
 
   return (
-    <div className="w-[588px] bg-white">
+    <div className="w-[588px] bg-white rounded-[10px]">
       <h2 className="px-6 py-4">Income - Expense</h2>
       <Bar data={barchartData} options={chartOptions} />
     </div>
