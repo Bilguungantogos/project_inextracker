@@ -1,9 +1,11 @@
 import React from "react";
+import Recordsmaininfo from "./Recordsmaininfo";
 
 const Recordsmain = () => {
+  const todaydata = [1, 2, 3, 4, 5];
   return (
-    <div className=" w-[85%] h-full">
-      <div className="flex justify-between items-center">
+    <div className=" w-[85%] ">
+      <div className="flex justify-between items-center px-6">
         <div className="flex items-center gap-3">
           <img
             src="./arrows/leftarrow.svg"
@@ -35,20 +37,28 @@ const Recordsmain = () => {
         </div>
       </div>
       <div>
-        <div className="flex justify-between mx-6 py-4 border-b-[#e3e3e3] border-b-[1px] ">
+        <div className="flex justify-between mx-6 py-4 border-b-[#e3e3e3] border-b-[1px] bg-white px-6 mt-6">
           <div className="flex gap-4 items-center">
-            <img
-              src="./house1.svg"
-              className="bg-[#0166FF] w-10 p-[10px] rounded-full"
-            ></img>
-            <div>
-              <h4></h4>
-              <p className="text-xs text-[#6B7280]"></p>
+            <div className="flex gap-2">
+              <input type="checkbox" className="checkbox" />
+              <h4>Select all</h4>
             </div>
           </div>
           <div>
-            <p className="text-base font-semibold text-[#84CC16]"></p>
+            <p className="text-base font-semibold text-[#94A3B8]">- 35,500₮</p>
           </div>
+        </div>
+        <div className="m-6">
+          <p className="font-semibold">Today</p>
+          {todaydata.map(() => {
+            return <Recordsmaininfo />;
+          })}
+        </div>
+        <div className="m-6">
+          <p className="font-semibold">Yesterday</p>
+          {todaydata.map(() => {
+            return <Recordsmaininfo />;
+          })}
         </div>
       </div>
     </div>

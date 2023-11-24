@@ -1,5 +1,7 @@
 import React from "react";
 import Category from "./Category";
+import ExpenseForm from "./ExpenseForm";
+import { useState } from "react";
 
 const Recordscategory = () => {
   const categoryNames = [
@@ -15,10 +17,19 @@ const Recordscategory = () => {
     { names: "Income" },
     { names: "Others" },
   ];
+  const [open, setOpen] = useState(false);
+  const closeForm = () => {
+    setOpen(false);
+  };
   return (
-    <div className="w-[250px] h-full inline-flex flex-col gap-6">
+    <div className="w-[282px] flex flex-col gap-6 bg-white py-6 px-4 rounded-lg">
       <h3 className="text-2xl">Records</h3>
-      <button className="btn btn-primary w-full h-[32px] rounded-full">
+      <button
+        className="btn btn-primary w-full h-[32px] rounded-full"
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
         Add
       </button>
       <input
@@ -47,7 +58,7 @@ const Recordscategory = () => {
           </label>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <p className="font-bold">Category</p>
           <button className="btn btn-default text-[gray] w-[61px] h-[24px] ">
@@ -84,6 +95,7 @@ const Recordscategory = () => {
           </div>
         </div>
       </div>
+      <ExpenseForm open={open} closeForm={closeForm} />
     </div>
   );
 };
