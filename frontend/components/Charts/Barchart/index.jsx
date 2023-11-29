@@ -26,35 +26,28 @@ const Barchart = () => {
   const [chartOptions, setChartOptions] = useState({});
 
   useEffect(() => {
-    setbarchartData(
-      {
-        labels: ["july", "july", "july", "july", "july", "july", "july"],
-        datasets: [
-          {
-            label: "Income",
-            data: [
-              3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000,
-            ],
-            backgroundColor: "#84CC16",
-          },
-          {
-            label: "Expenses",
-            data: [
-              2000000, 2000000, 2000000, 2000000, 2000000, 2000000, 2000000,
-            ],
-            backgroundColor: "#F97316",
-          },
-        ],
-      },
-      []
-    );
+    setbarchartData({
+      labels: ["july", "july", "july", "july", "july", "july", "july"],
+      datasets: [
+        {
+          label: "Income",
+          data: [3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000],
+          backgroundColor: "#84CC16",
+        },
+        {
+          label: "Expenses",
+          data: [2000000, 2000000, 2000000, 2000000, 2000000, 2000000, 2000000],
+          backgroundColor: "#F97316",
+        },
+      ],
+    });
     setChartOptions({
       responsive: true,
       plugins: {
         legend: { display: false },
       },
     });
-  });
+  }, []);
 
   return (
     <div className="w-[588px] bg-white rounded-[10px]">

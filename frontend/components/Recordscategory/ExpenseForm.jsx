@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const ExpenseForm = ({ open, closeForm }) => {
   const [switch1, setSwitch1] = useState(false);
+  const exinbtn = () => {
+    if (switch1) {
+      setSwitch1(false);
+    } else setSwitch1(true);
+  };
+  useEffect(() => {}, switch1);
   return (
-    <div
-      className="modal bg-[#3636369a] w-full h-full"
-      open={open}
-      switch1={switch1}
-    >
+    <div className="modal bg-[#3636369a] w-full h-full" open={open}>
       <div className=" p-0 m-0 w-[800px] bg-white">
         <div className="flex justify-between border-b-[1px] px-6 py-5 ">
           <h4>Add Record</h4>
@@ -17,22 +19,24 @@ const ExpenseForm = ({ open, closeForm }) => {
         <div className="flex">
           <div className="py-4 px-6 w-[50%]">
             <div className="flex mb-4">
-              <button
-                className="btn btn-primary w-[50%]"
-                onClick={() => {
-                  setSwitch1(false);
-                }}
-              >
-                Expense
-              </button>
-              <button
-                className="btn btn-default w-[50%]"
-                onClick={() => {
-                  setSwitch1(true);
-                }}
-              >
-                Income
-              </button>
+              {!switch1 && (
+                <>
+                  <button className="btn btn-primary w-[50%]">Expense</button>
+                  <button className="btn btn-default w-[50%]" onClick={exinbtn}>
+                    Income
+                  </button>
+                </>
+              )}
+              {switch1 && (
+                <>
+                  <button className="btn btn-default w-[50%]" onClick={exinbtn}>
+                    Expense
+                  </button>
+                  <button className="btn btn-neutral w-[50%] border-[#16A34A] bg-[#16A34A]">
+                    Income
+                  </button>
+                </>
+              )}
             </div>
             <div className="flex flex-col">
               <div className="form-control w-full">
@@ -53,7 +57,7 @@ const ExpenseForm = ({ open, closeForm }) => {
                 </label>
                 <select className="select select-bordered w-full">
                   <option disabled selected>
-                    Choose
+                    Find or choose category
                   </option>
                   <option>Drink</option>
                   <option>Food</option>
@@ -86,9 +90,16 @@ const ExpenseForm = ({ open, closeForm }) => {
                 </div>
               </div>
             </div>
-            <button className="btn btn-primary w-full my-8 rounded-full">
-              Add Record
-            </button>
+            {switch1 && (
+              <button className="btn btn-primary w-full my-8 bg-[#16A34A] border-[#16A34A] rounded-full">
+                Add Record
+              </button>
+            )}
+            {!switch1 && (
+              <button className="btn btn-primary w-full my-8 rounded-full ">
+                Add Record
+              </button>
+            )}
           </div>
           <div className="py-4 px-6 w-[50%] ">
             <label className="label">

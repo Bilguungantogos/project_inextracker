@@ -8,6 +8,10 @@ const Recordsinfo = ({ data }) => {
           src="./house1.svg"
           className="bg-[#0166FF] w-10 p-[10px] rounded-full"
         ></img>
+        <div>
+          <h4>{data.type}</h4>
+          <p className="font-normal text-xs text-[#6B7280]">{data.timeago}</p>
+        </div>
       </div>
       <div>
         <p className="text-base font-semibold text-[#84CC16]">{data.value}</p>

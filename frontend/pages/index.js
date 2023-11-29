@@ -4,7 +4,7 @@ import Records from "@/components/Records";
 
 export default function Home() {
   return (
-    <main className="h-screen px-[120px] pt-8 bg-[#F3F4F6] ">
+    <main className="h-full px-[120px] pt-8 bg-[#F3F4F6] ">
       <Cards />
       <Charts />
       <Records />
