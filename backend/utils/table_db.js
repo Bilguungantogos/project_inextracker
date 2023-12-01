@@ -15,8 +15,17 @@ const createTables = async () => {
   console.log("created table............");
 };
 
+const createTablesforcat = async () => {
+  await sql`CREATE TABLE usercategory(
+    users_id uuid DEFAULT uuid_generate_v4(),
+    category_img TEXT ,
+    category_color TEXT,
+    FOREIGN KEY (users_id) REFERENCES users(id)`;
+};
 const insertData = async () => {
   await sql``;
 };
+
 createTables();
+createTablesforcat();
 insertData();

@@ -17,10 +17,6 @@ const Recordscategory = () => {
     { names: "Income" },
     { names: "Others" },
   ];
-  const [open, setOpen] = useState(false);
-  const closeForm = () => {
-    setOpen(false);
-  };
   return (
     <div className="w-[282px] flex flex-col gap-6 bg-white py-6 px-4 rounded-lg">
       <h3 className="text-2xl">Records</h3>

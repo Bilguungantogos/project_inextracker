@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Loginmini from "../../components/Loginmini";
-import Signup from "../../components/signup";
+import Loginmini from "../../components/SignupandSignin/Loginmini";
+import Signup from "../../components/SignupandSignin/Signup";
 
 const login = () => {
   const [logsign, setLogsign] = useState(false);

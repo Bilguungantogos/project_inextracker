@@ -13,6 +13,18 @@ const signup = async (req, res) => {
   }
 };
 
+// const addcategory = async (req, res) => {
+//   try {
+//     const findUserId =
+//       await sql`SELECT name, email, password FROM users WHERE email=${userEmail}`;
+//     const { id, category_img, category_color } = req.body;
+//     res.status(201).json({ message: "success" });
+//   } catch (err) {
+//     res.status(500).json({ message: "failed" });
+//     console.log(err);
+//   }
+// };
+
 const signin = async (req, res) => {
   try {
     const { userEmail, userPassword } = req.body;

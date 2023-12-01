@@ -1,44 +1,55 @@
 import React from "react";
+import Loginmini from "../Loginmini";
 
-const Loginmini = ({ setLogsign }) => {
-  const logsignbtn = () => {
-    setLogsign(true);
+const Signup = ({ logsignswitch, setLogsignswitch }) => {
+  const switchbtn2 = () => {
+    logsignswitch;
   };
   return (
-    <div className="flex flex-col justify-center w-[384px] m-auto mt-[25%] gap-10">
+    <div className="flex flex-col justify-center w-[384px] mt-[25%] m-auto gap-10">
       <div className="flex justify-center gap-2 p-[5.4px]">
         <img src="/geldlogo.svg" className=" cursor-pointer" />
         <img src="/geld.svg" className=" cursor-pointer" />
       </div>
       <div className="text-center">
-        <p className="text-2xl font-semibold">Welcome Back</p>
+        <p className="text-2xl font-semibold">Create Geld account</p>
         <p className="text-base font-normal text-slate-500">
-          Welcome back, Please enter your details
+          Sign up below to create your Wallet account
         </p>
       </div>
       <div className="flex flex-col gap-4">
         <input
           type="text"
-          placeholder="Email"
+          placeholder="Name"
           className="input input-bordered w-full bg-slate-100"
         />
         <input
           type="text"
-          placeholder="Password"
+          placeholder="Email"
           className="input input-bordered w-full bg-slate-100 "
         />
+        <input
+          type="password"
+          placeholder="Password"
+          className="input input-bordered w-full bg-slate-100"
+        />
+        <input
+          type="password"
+          placeholder="Re-password"
+          className="input input-bordered w-full bg-slate-100"
+        />
         <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white">
-          Log in
+          Sign up
         </button>
       </div>
       <div className="flex justify-center gap-2">
         <p className="text-base font-normal text-center">Don't have account?</p>
-        <button className="ml-1 text-[#0166FF]" onClick={logsignbtn}>
-          Sign up
+        <button className="ml-1 text-[#0166FF]" onClick={switchbtn2}>
+          Sign in
         </button>
       </div>
     </div>
   );
 };
 
-export default Loginmini;
+export default Signup;
