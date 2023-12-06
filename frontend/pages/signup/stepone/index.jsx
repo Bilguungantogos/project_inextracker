@@ -1,6 +1,11 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const Stepone = () => {
+  const router = useRouter();
+  const handleStepsClick = () => {
+    router.push("/signup/steptwo");
+  };
   return (
     <div className="flex flex-col items-center mt-10">
       <div className="flex flex-col gap-12 mb-[142px]">
@@ -28,7 +33,10 @@ const Stepone = () => {
           Your base currency should be the one you use most often. All
           transaction in other currencies will be calculated based on this one
         </p>
-        <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full mt-8 font-normal text-[20px]">
+        <button
+          className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full mt-8 font-normal text-[20px]"
+          onClick={handleStepsClick}
+        >
           Confirm
         </button>
       </div>

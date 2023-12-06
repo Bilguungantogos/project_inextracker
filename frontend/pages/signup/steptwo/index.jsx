@@ -1,6 +1,11 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const Steptwo = () => {
+  const router = useRouter();
+  const handleStepsClick = () => {
+    router.push("/signup/stepthree");
+  };
   return (
     <div className="flex flex-col items-center mt-10">
       <div className="flex flex-col gap-12 mb-[142px]">
@@ -26,7 +31,10 @@ const Steptwo = () => {
           <p className="text-xs font-normal text-slate-500 my-4">
             How much cash do you have in your wallet?
           </p>
-          <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full m-2 font-normal text-[20px]">
+          <button
+            className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full m-2 font-normal text-[20px]"
+            onClick={handleStepsClick}
+          >
             Confirm
           </button>
         </div>

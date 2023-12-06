@@ -1,6 +1,11 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const Stepthree = () => {
+  const router = useRouter();
+  const handleStepsClick = () => {
+    router.push("/");
+  };
   return (
     <div className="flex flex-col items-center mt-10">
       <div className="flex flex-col gap-12 mb-[142px]">
@@ -22,7 +27,10 @@ const Stepthree = () => {
             Your very first account has been created. Now continue to dashboard
             and start tracking
           </p>
-          <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full m-2 font-normal text-[20px]">
+          <button
+            className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full m-2 font-normal text-[20px]"
+            onClick={handleStepsClick}
+          >
             Go to Dashboard
           </button>
         </div>

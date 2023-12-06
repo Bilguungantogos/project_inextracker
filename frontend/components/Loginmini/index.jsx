@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Signup from "../Signup";
+import { useRouter } from "next/router";
 
-const Loginmini = ({ logsignswitch, setLogsignswitch }) => {
-  const switchbtn = () => {
-    setLogsignswitch(!logsignswitch);
+const Loginmini = () => {
+  const router = useRouter();
+  const handleSignupClick = () => {
+    router.push("/signup");
   };
   return (
     <>
@@ -37,7 +38,7 @@ const Loginmini = ({ logsignswitch, setLogsignswitch }) => {
           <p className="text-base font-normal text-center">
             Don't have account?
           </p>
-          <button className="ml-1 text-[#0166FF]" onClick={switchbtn}>
+          <button className="ml-1 text-[#0166FF]" onClick={handleSignupClick}>
             Sign up
           </button>
         </div>

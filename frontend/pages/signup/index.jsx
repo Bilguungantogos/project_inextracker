@@ -6,7 +6,7 @@ const login = () => {
   return (
     <div className="flex">
       <div className="bg-white w-full h-screen">
-        <Loginmini />
+        <Signup />
       </div>
       <div className="bg-[#0166FF] w-full h-screen"></div>
     </div>

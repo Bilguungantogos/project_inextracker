@@ -101,6 +101,24 @@ const transactionupdate = async (req, res) => {
   }
 };
 
+const transactionget = async (req, res) => {
+  try {
+    const { transactionId } = req.params;
+    const { name, amount, transaction_type, description } = req.body;
+    await sql`
+    UPDATE usertransaction
+    SET name=${name}, 
+    amount=${amount}, 
+    transaction_type=${transaction_type}, 
+    description=${description} 
+    WHERE id=${transactionId}`;
+    res.status(201).json({ message: "success" });
+  } catch (err) {
+    res.status(500).json({ message: "failed" });
+    console.log(err);
+  }
+};
+
 module.exports = {
   signup,
   signin,
@@ -108,4 +126,5 @@ module.exports = {
   transactionpost,
   transactiondelete,
   transactionupdate,
+  transactionget,
 };

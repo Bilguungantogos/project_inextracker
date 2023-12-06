@@ -1,9 +1,14 @@
 import React from "react";
 import Loginmini from "../Loginmini";
+import { useRouter } from "next/router";
 
-const Signup = ({ logsignswitch, setLogsignswitch }) => {
-  const switchbtn2 = () => {
-    logsignswitch;
+const Signup = ({}) => {
+  const router = useRouter();
+  const handleSignupClick = () => {
+    router.push("/login");
+  };
+  const handleStepclick = () => {
+    router.push("/signup/stepone");
   };
   return (
     <div className="flex flex-col justify-center w-[384px] mt-[25%] m-auto gap-10">
@@ -38,13 +43,16 @@ const Signup = ({ logsignswitch, setLogsignswitch }) => {
           placeholder="Re-password"
           className="input input-bordered w-full bg-slate-100"
         />
-        <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white">
+        <button
+          className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white"
+          onClick={handleStepclick}
+        >
           Sign up
         </button>
       </div>
       <div className="flex justify-center gap-2">
         <p className="text-base font-normal text-center">Don't have account?</p>
-        <button className="ml-1 text-[#0166FF]" onClick={switchbtn2}>
+        <button className="ml-1 text-[#0166FF]" onClick={handleSignupClick}>
           Sign in
         </button>
       </div>
