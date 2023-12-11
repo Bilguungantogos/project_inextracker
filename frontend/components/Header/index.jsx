@@ -2,12 +2,15 @@ import Link from "next/link";
 import React from "react";
 import ExpenseForm from "../Recordscategory/ExpenseForm";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "@/context/UserProvider";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const closeForm = () => {
     setOpen(false);
   };
+  const { user } = useContext(UserContext);
   return (
     <header className="flex items-center justify-between px-[120px] py-4">
       <div className="flex gap-6">
@@ -55,6 +58,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
+        <p>{user.name}</p>
       </div>
       <ExpenseForm open={open} closeForm={closeForm} />
     </header>

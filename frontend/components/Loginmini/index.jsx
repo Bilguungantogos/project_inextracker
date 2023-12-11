@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from "next/router";
+import { UserContext } from "@/context/UserProvider";
 
 const Loginmini = () => {
   const router = useRouter();
   const handleSignupClick = () => {
     router.push("/signup");
   };
+  const { loginUserData, login, changeLoginUserData } = useContext(UserContext);
   return (
     <>
       <div className="flex flex-col justify-center w-[384px] m-auto mt-[25%] gap-10">
@@ -22,15 +24,30 @@ const Loginmini = () => {
         <div className="flex flex-col gap-4">
           <input
             type="text"
+            name="email"
             placeholder="Email"
             className="input input-bordered w-full bg-slate-100"
+            onChange={(e) => {
+              changeLoginUserData(e.target.name, e.target.value);
+            }}
+            value={loginUserData.email}
           />
           <input
-            type="text"
+            type="password"
+            name="password"
             placeholder="Password"
             className="input input-bordered w-full bg-slate-100 "
+            onChange={(e) => {
+              changeLoginUserData(e.target.name, e.target.value);
+            }}
+            value={loginUserData.password}
           />
-          <button className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white">
+          <button
+            className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white"
+            onClick={() => {
+              login();
+            }}
+          >
             Log in
           </button>
         </div>

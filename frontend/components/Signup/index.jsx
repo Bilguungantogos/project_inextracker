@@ -1,8 +1,8 @@
-import React from "react";
-import Loginmini from "../Loginmini";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
+import { UserContext } from "@/context/UserProvider";
 
-const Signup = ({}) => {
+const Signup = () => {
   const router = useRouter();
   const handleSignupClick = () => {
     router.push("/login");
@@ -10,6 +10,9 @@ const Signup = ({}) => {
   const handleStepclick = () => {
     router.push("/signup/stepone");
   };
+
+  const { user } = useContext(UserContext);
+  console.log(user);
   return (
     <div className="flex flex-col justify-center w-[384px] mt-[25%] m-auto gap-10">
       <div className="flex justify-center gap-2 p-[5.4px]">

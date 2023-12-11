@@ -26,8 +26,9 @@ const Stepone = () => {
           <option disabled selected>
             MNT - Mongolian Tugrik
           </option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
+          <option>MNT - Mongolian Tugrik</option>
+          <option>USD - United States Dollar</option>
+          <option>JPY - Japanese Yen</option>
         </select>
         <p className="text-xs font-normal text-slate-500">
           Your base currency should be the one you use most often. All
