@@ -7,6 +7,7 @@ export const UserContext = createContext({});
 const UserProvider = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
   const [loginUserData, setLoginuserData] = useState({
     email: "naraa@gmail.com",
     password: "",
@@ -15,6 +16,9 @@ const UserProvider = ({ children }) => {
   const changeLoginUserData = (key, value) => {
     setLoginuserData({ ...loginUserData, [key]: value });
   };
+  const logout = () => {
+    setUser(null);
+  };
 
   const login = async () => {
     if (!loginUserData.email || !loginUserData.password) {
@@ -22,6 +26,7 @@ const UserProvider = ({ children }) => {
       return;
     }
     try {
+      setLoading(true);
       const { data } = await axios.post("http://localhost:8008/auth/signin", {
         userEmail: loginUserData.email,
         userPassword: loginUserData.password,
@@ -29,7 +34,9 @@ const UserProvider = ({ children }) => {
       setUser(data.user);
       router.push("/");
     } catch (error) {
-      console.log(error);  
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -37,7 +44,15 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, loginUserData, changeLoginUserData, login, signup }}
+      value={{
+        user,
+        loginUserData,
+        changeLoginUserData,
+        login,
+        signup,
+        logout,
+        loading,
+      }}
     >
       {children}
     </UserContext.Provider>

@@ -7,7 +7,8 @@ const Loginmini = () => {
   const handleSignupClick = () => {
     router.push("/signup");
   };
-  const { loginUserData, login, changeLoginUserData } = useContext(UserContext);
+  const { loginUserData, login, changeLoginUserData, loading } =
+    useContext(UserContext);
   return (
     <>
       <div className="flex flex-col justify-center w-[384px] m-auto mt-[25%] gap-10">
@@ -44,6 +45,7 @@ const Loginmini = () => {
           />
           <button
             className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white"
+            disabled={loading}
             onClick={() => {
               login();
             }}

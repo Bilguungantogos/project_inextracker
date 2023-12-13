@@ -4,13 +4,21 @@ import ExpenseForm from "../Recordscategory/ExpenseForm";
 import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "@/context/UserProvider";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+
   const closeForm = () => {
     setOpen(false);
   };
-  const { user } = useContext(UserContext);
+  const toprofilepage = () => {
+    router.push("/profile");
+  };
+
+  const { user, logout } = useContext(UserContext);
+
   return (
     <header className="flex items-center justify-between px-[120px] py-4">
       <div className="flex gap-6">
@@ -48,17 +56,17 @@ const Header = () => {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Profile</a>
+              <a onClick={toprofilepage}>Profile</a>
             </li>
             <li>
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={logout}>Logout</a>
             </li>
           </ul>
         </div>
-        <p>{user.name}</p>
+        <p></p>
       </div>
       <ExpenseForm open={open} closeForm={closeForm} />
     </header>
