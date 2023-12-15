@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const { createContext, useState, useContext } = require("react");
 
-export const StepContext = createContext({});
+export const StepContext = createContext();
 
 export const StepProvider = ({ children }) => {
   const router = useRouter();

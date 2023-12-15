@@ -6,7 +6,7 @@ export const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
 
   const [formUserData, setLoginUserData] = useState({
@@ -44,7 +44,7 @@ const UserProvider = ({ children }) => {
         password: formUserData.password,
         name: formUserData.name,
       });
-      console.log(data);
+      console.log(setUser);
       setUser(data.user);
       router.push("/signup/stepone");
     } catch (error) {
@@ -92,6 +92,7 @@ const UserProvider = ({ children }) => {
         formUserData,
         changeFormUserData,
         setLoginUserData,
+        setUser,
       }}
     >
       {children}

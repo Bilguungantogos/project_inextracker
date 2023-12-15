@@ -10,12 +10,14 @@ const signup = async (req, res) => {
       return res.status(400).json({ message: "User email is already exist" });
     }
     const hashedPassword = bcrypt.hashSync(password, 10);
-    await sql`INSERT INTO users(email, name, password) VALUES(${email}, ${name}, ${hashedPassword}) RETURNING id`;
+    const data =
+      await sql`INSERT INTO users(email, name, password) VALUES(${email}, ${name}, ${hashedPassword}) RETURNING id`;
+
     const { id } = data[0];
     res.status(201).json({ message: "success", user: { id } });
   } catch (err) {
-    res.status(500).json({ message: "failed" });
     console.log(err);
+    res.status(500).json({ message: "failed" });
   }
 };
 
