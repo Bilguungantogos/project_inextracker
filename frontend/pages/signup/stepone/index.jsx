@@ -1,11 +1,9 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useContext, useState } from "react";
+import { StepContext } from "@/context/StepContext";
 
 const Stepone = () => {
-  const router = useRouter();
-  const handleStepsClick = () => {
-    router.push("/signup/steptwo");
-  };
+  const { changeStepData, toSteptwo } = useContext(StepContext);
+
   return (
     <div className="flex flex-col items-center mt-10">
       <div className="flex flex-col gap-12 mb-[142px]">
@@ -22,13 +20,19 @@ const Stepone = () => {
       <div className="flex flex-col items-center gap-3 w-[384px]">
         <img src="/currency.png" className="w-12 h-12"></img>
         <p className="text-2xl font-semibold">Select Base currency</p>
-        <select className="select select-bordered w-full h-16 mt-8 bg-slate-100 font-semibold">
+        <select
+          className="select select-bordered w-full h-16 mt-8 bg-slate-100 font-semibold"
+          name="currency_type"
+          onChange={(e) => {
+            changeStepData(e.target.name, e.target.value);
+          }}
+        >
           <option disabled selected>
             MNT - Mongolian Tugrik
           </option>
-          <option>MNT - Mongolian Tugrik</option>
-          <option>USD - United States Dollar</option>
-          <option>JPY - Japanese Yen</option>
+          <option value="MNT">MNT - Mongolian Tugrik</option>
+          <option value="USD">USD - United States Dollar</option>
+          <option value="JPY">JPY - Japanese Yen</option>
         </select>
         <p className="text-xs font-normal text-slate-500">
           Your base currency should be the one you use most often. All
@@ -36,7 +40,7 @@ const Stepone = () => {
         </p>
         <button
           className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white w-full mt-8 font-normal text-[20px]"
-          onClick={handleStepsClick}
+          onClick={toSteptwo}
         >
           Confirm
         </button>

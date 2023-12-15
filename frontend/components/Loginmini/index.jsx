@@ -7,7 +7,7 @@ const Loginmini = () => {
   const handleSignupClick = () => {
     router.push("/signup");
   };
-  const { loginUserData, login, changeLoginUserData, loading } =
+  const { formUserData, login, setLoginUserData, changeFormUserData, loading } =
     useContext(UserContext);
   return (
     <>
@@ -29,9 +29,9 @@ const Loginmini = () => {
             placeholder="Email"
             className="input input-bordered w-full bg-slate-100"
             onChange={(e) => {
-              changeLoginUserData(e.target.name, e.target.value);
+              changeFormUserData(e.target.name, e.target.value);
             }}
-            value={loginUserData.email}
+            value={formUserData.email}
           />
           <input
             type="password"
@@ -39,9 +39,9 @@ const Loginmini = () => {
             placeholder="Password"
             className="input input-bordered w-full bg-slate-100 "
             onChange={(e) => {
-              changeLoginUserData(e.target.name, e.target.value);
+              changeFormUserData(e.target.name, e.target.value);
             }}
-            value={loginUserData.password}
+            value={formUserData.password}
           />
           <button
             className="btn btn-primary rounded-[20px] bg-[#0166FF] text-white"
