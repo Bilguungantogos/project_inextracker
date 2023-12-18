@@ -8,6 +8,7 @@ const UserProvider = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
+  const [modalswitch, setModalswitch] = useState(false);
 
   const [formUserData, setLoginUserData] = useState({
     email: "naraa@gmail.com",
@@ -93,6 +94,8 @@ const UserProvider = ({ children }) => {
         changeFormUserData,
         setLoginUserData,
         setUser,
+        modalswitch,
+        setModalswitch,
       }}
     >
       {children}

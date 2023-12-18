@@ -1,6 +1,6 @@
 import React from "react";
 
-const Addcategory = ({ modalswitch }) => {
+const Addcategory = () => {
   return (
     <div
       className="modal bg-[#3636369a] w-full h-full"
