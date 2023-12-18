@@ -8,28 +8,70 @@ const UserProvider = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
-  const [loginUserData, setLoginuserData] = useState({
+  const [modalswitch, setModalswitch] = useState(false);
+
+  const [formUserData, setLoginUserData] = useState({
     email: "naraa@gmail.com",
     password: "",
+    rePassword: "",
+    name: "",
+    currency_type: "",
+    balance: 0,
   });
 
-  const changeLoginUserData = (key, value) => {
-    setLoginuserData({ ...loginUserData, [key]: value });
+  const changeFormUserData = (key, value) => {
+    setLoginUserData({ ...formUserData, [key]: value });
   };
+
+  const signup = async () => {
+    if (
+      !formUserData.email ||
+      !formUserData.password ||
+      !formUserData.rePassword ||
+      !formUserData.name
+    ) {
+      alert("Хоосон талбаруууд байж болохгүй");
+      return;
+    }
+
+    if (formUserData.password !== formUserData.rePassword) {
+      alert("Нууц үг хоорондоо тохирохгүй байна.");
+      return;
+    }
+
+    try {
+      const { data } = await axios.post("http://localhost:8008/auth/signup", {
+        email: formUserData.email,
+        password: formUserData.password,
+        name: formUserData.name,
+      });
+      console.log(setUser);
+      setUser(data.user);
+      router.push("/signup/stepone");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const logout = () => {
     setUser(null);
   };
 
   const login = async () => {
-    if (!loginUserData.email || !loginUserData.password) {
+    if (!formUserData.email || !formUserData.password) {
       alert("aaa");
+      return;
+    }
+
+    if (!formUserData.email.includes("@")) {
+      alert("Email эсвэл Password Заавал бөглөх ёстой");
       return;
     }
     try {
       setLoading(true);
       const { data } = await axios.post("http://localhost:8008/auth/signin", {
-        userEmail: loginUserData.email,
-        userPassword: loginUserData.password,
+        userEmail: formUserData.email,
+        userPassword: formUserData.password,
       });
       setUser(data.user);
       router.push("/");
@@ -40,18 +82,20 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const signup = () => {};
-
   return (
     <UserContext.Provider
       value={{
         user,
-        loginUserData,
-        changeLoginUserData,
         login,
         signup,
         logout,
         loading,
+        formUserData,
+        changeFormUserData,
+        setLoginUserData,
+        setUser,
+        modalswitch,
+        setModalswitch,
       }}
     >
       {children}
