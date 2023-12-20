@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import ExpenseForm from "../Recordscategory/ExpenseForm";
+import ExpenseForm from "../ExpenseForm";
 import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "@/context/UserProvider";

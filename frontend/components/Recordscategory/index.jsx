@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Category from "./Category";
-import ExpenseForm from "./ExpenseForm";
+import ExpenseForm from "../ExpenseForm";
 import { useState } from "react";
 import Addcategory from "./addcategory";
 import { UserContext } from "@/context/UserProvider";
@@ -23,7 +23,6 @@ const Recordscategory = () => {
   const closeForm = () => {
     setOpen(false);
   };
-  const { modalswitch } = useContext(UserContext);
   return (
     <div className="w-[282px] flex flex-col gap-6 bg-white py-6 px-4 rounded-lg">
       <h3 className="text-2xl">Records</h3>
@@ -98,8 +97,7 @@ const Recordscategory = () => {
           </div>
         </div>
       </div>
-      {!modalswitch && <ExpenseForm open={open} closeForm={closeForm} />}
-      {modalswitch && <Addcategory />}
+      {<ExpenseForm open={open} closeForm={closeForm} />}
     </div>
   );
 };
