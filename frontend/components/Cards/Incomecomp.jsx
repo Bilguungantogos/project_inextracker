@@ -1,6 +1,11 @@
-import React from "react";
+import { TransactionContext } from "@/context/TransactionContext";
+import { UserContext } from "@/context/UserProvider";
+import React, { useContext, useEffect } from "react";
 
 const Incomecomp = () => {
+  const { allincome, setAllincome } = useContext(TransactionContext);
+  const { user } = useContext(UserContext);
+
   return (
     <div className="w-[384px] rounded-[10px] bg-white">
       <div className="flex h-8 px-6 py-6 items-center gap-2 border-b-[1px]">
@@ -8,7 +13,7 @@ const Incomecomp = () => {
         <p>Your Income</p>
       </div>
       <div className="px-6 pt-5 pb-6">
-        <h2 className="font-bold text-4xl">1,200,000 ₮</h2>
+        <h2 className="font-bold text-4xl">{allincome}</h2>
         <p className="text-[#64748B] text-lg">Your Income Amount</p>
         <div className="flex mt-4 gap-2">
           <img src="./arrowcircles/arrowcircleup.svg"></img>

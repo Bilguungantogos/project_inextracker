@@ -12,6 +12,7 @@ const ExpenseForm = ({ open, closeForm }) => {
   const [category, setCategory] = useState([]);
   const { transactionData, changeTransactionData, addTransaction } =
     useContext(TransactionContext);
+  const { user } = useContext(UserContext);
   const closeForm1 = () => {
     setOpen1(false);
   };
@@ -37,10 +38,20 @@ const ExpenseForm = ({ open, closeForm }) => {
     } = await axios.get("http://localhost:8008/categories");
     console.log("RES", categories);
     setCategory(categories);
+    console.log(user);
+  };
+  const getAlltransaction = async () => {
+    try {
+      const {
+        data: { data },
+      } = await axios.get("http://localhost:8008/transactions/" + user.id);
+      console.log(data, "aaaaaaaa");
+    } catch (error) {}
   };
 
   useEffect(() => {
     getCategories();
+    getAlltransaction();
   }, []);
 
   return (
@@ -119,10 +130,10 @@ const ExpenseForm = ({ open, closeForm }) => {
                         <img src="/categoryicons/plus.svg"></img>Add category
                       </button>
                     </li>
-                    {/* <RecordIcons
+                    <RecordIcons
                       changeTransactionData={changeTransactionData}
                       category={category}
-                    /> */}
+                    />
                   </ul>
                 </details>
               </div>
@@ -135,7 +146,7 @@ const ExpenseForm = ({ open, closeForm }) => {
                     type="datetime-local"
                     placeholder="Oct 30,2023"
                     className="w-full input input-bordered bg-[#F9FAFB]"
-                    name="updated_at"
+                    name="updatedat"
                     onChange={(e) => {
                       console.log("first", e.target.value);
                       changeTransactionData(e.target.name, e.target.value);

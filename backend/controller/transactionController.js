@@ -1,6 +1,17 @@
 const { sql } = require("../config/pgDb");
 
-const getAllTransaction = async (req, res) => {};
+const getAllTransaction = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const allTransaction =
+      await sql`SELECT transaction_type, SUM(amount) FROM usertransaction WHERE transaction_type IS NOT NULL AND user_id=${userId} GROUP BY transaction_type;`;
+    res.status(201).json({ message: "success", allTransaction });
+    console.log(allTransaction);
+  } catch (error) {
+    res.status(500).json({ message: "failed" });
+  }
+};
 
 const createTransaction = async (req, res) => {
   try {
@@ -11,8 +22,18 @@ const createTransaction = async (req, res) => {
       transaction_type,
       description,
       category_id,
-      updated_at,
+      updatedat,
     } = req.body;
+
+    console.log(
+      user_id,
+      name,
+      amount,
+      transaction_type,
+      description,
+      category_id,
+      updatedat
+    );
 
     const data = await sql`INSERT INTO usertransaction(user_id,
         name,
@@ -20,7 +41,7 @@ const createTransaction = async (req, res) => {
         transaction_type,
         description,
         category_id,
-        updated_at) VALUES(${user_id},${name}, ${amount},  ${transaction_type}, ${description}, ${category_id},${updated_at}) RETURNING *`;
+        updatedAt) VALUES(${user_id},${name}, ${amount},  ${transaction_type}, ${description}, ${category_id},${updatedat}) RETURNING *`;
     res.status(201).json({ message: "success", transaction: data[0] });
   } catch (err) {
     res.status(500).json({ message: "failed" });
