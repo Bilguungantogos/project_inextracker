@@ -10,8 +10,12 @@ import RecordIcons from "./RecordIcons";
 const ExpenseForm = ({ open, closeForm }) => {
   const [open1, setOpen1] = useState(false);
   const [category, setCategory] = useState([]);
-  const { transactionData, changeTransactionData, addTransaction } =
-    useContext(TransactionContext);
+  const {
+    transactionData,
+    changeTransactionData,
+    addTransaction,
+    getAlltransaction,
+  } = useContext(TransactionContext);
   const { user } = useContext(UserContext);
   const closeForm1 = () => {
     setOpen1(false);
@@ -40,19 +44,6 @@ const ExpenseForm = ({ open, closeForm }) => {
     setCategory(categories);
     console.log(user);
   };
-  const getAlltransaction = async () => {
-    try {
-      const {
-        data: { data },
-      } = await axios.get("http://localhost:8008/transactions/" + user.id);
-      console.log(data, "aaaaaaaa");
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    getCategories();
-    getAlltransaction();
-  }, []);
 
   return (
     <div className="modal bg-[#3636369a] w-full h-full" open={open}>

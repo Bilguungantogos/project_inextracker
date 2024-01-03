@@ -5,9 +5,9 @@ import Piechartinfo from "./piechartinfo";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Piechart = () => {
-  const data = {
-    labels: ["Bills", "Food", "Shopping", "Insurance", "Clothing"],
+const Piechart = ({ categoryData }) => {
+  const data2 = {
+    labels: categoryData?.labels,
     datasets: [
       {
         label: "Income - Expense",
@@ -23,7 +23,7 @@ const Piechart = () => {
       },
     ],
   };
-  const options = {
+  const options2 = {
     responsive: true,
     plugins: {
       legend: {
@@ -71,7 +71,12 @@ const Piechart = () => {
       </div>
       <div className="flex items-center py-8 px-6 gap-[47px]">
         <div className="w-[156px] h-[156px]">
-          <Doughnut data={data} options={options} />
+          {categoryData && <Doughnut options={options2} data={data2} />}
+          {!categoryData && (
+            <div className="flex justify-center items-center gap-4 w-full h-full">
+              <div className="skeleton h-24 w-24 rounded-full"></div>
+            </div>
+          )}
         </div>
         <div className="flex flex-col w-full ml-4">
           {piedata.map((data) => {

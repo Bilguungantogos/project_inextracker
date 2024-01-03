@@ -15,7 +15,7 @@ const TransactionProvider = ({ children }) => {
     category_id: "",
     updatedat: "",
   });
-  const [allincome, setAllincome] = useState(null);
+  const [getAllinex, setGetallinex] = useState(null);
 
   const changeTransactionData = (key, value) => {
     setTransactionData({ ...transactionData, [key]: value });
@@ -38,14 +38,43 @@ const TransactionProvider = ({ children }) => {
     }
   };
 
+  const getAllIncomeExpense = async () => {
+    try {
+      const { data } = await axios.get(
+        "http://localhost:8008/transactions/incomeandexpense/" +
+          `b0fff3b0-cf44-4605-818e-d94e250d372f`
+      );
+      setGetallinex(data);
+    } catch (error) {}
+  };
+
+  const [transactions, setTransactions] = useState([]);
+  const getTransactions = async () => {
+    try {
+      const {
+        data: { transactions },
+      } = await axios.get(
+        "http://localhost:8008/transactions/" +
+          "b0fff3b0-cf44-4605-818e-d94e250d372f"
+      );
+      setTransactions(transactions);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getAllIncomeExpense();
+    getTransactions();
+  }, []);
+
   return (
     <TransactionContext.Provider
       value={{
         transactionData,
         changeTransactionData,
         addTransaction,
-        allincome,
-        setAllincome,
+        setGetallinex,
+        getAllinex,
+        transactions,
       }}
     >
       {children}

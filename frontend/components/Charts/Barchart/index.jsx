@@ -20,39 +20,50 @@ ChartJS.register(
   Legend
 );
 
-const Barchart = () => {
-  const [barchartData, setbarchartData] = useState({ datasets: [] });
-
-  const [chartOptions, setChartOptions] = useState({});
-
-  useEffect(() => {
-    setbarchartData({
-      labels: ["july", "july", "july", "july", "july", "july", "july"],
-      datasets: [
-        {
-          label: "Income",
-          data: [3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000],
-          backgroundColor: "#84CC16",
-        },
-        {
-          label: "Expenses",
-          data: [2000000, 2000000, 2000000, 2000000, 2000000, 2000000, 2000000],
-          backgroundColor: "#F97316",
-        },
-      ],
-    });
-    setChartOptions({
-      responsive: true,
-      plugins: {
-        legend: { display: false },
+const Barchart = ({ barChartData }) => {
+  const data1 = {
+    labels: barChartData?.labels,
+    datasets: [
+      {
+        label: "Income",
+        backgroundColor: "#22C55E",
+        data: barChartData?.incomeData,
       },
-    });
-  }, []);
+      {
+        label: "Expense",
+        backgroundColor: "#F87171",
+        data: barChartData?.expenseData,
+      },
+    ],
+  };
+
+  const options1 = {
+    responsive: true,
+    plugins: {
+      title: "CHART",
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
 
   return (
     <div className="w-[588px] bg-white rounded-[10px]">
       <h2 className="px-6 py-4">Income - Expense</h2>
-      <Bar data={barchartData} options={chartOptions} />
+      {barChartData && <Bar data={data1} options={options1} />}
+      {!barChartData && (
+        <div className="flex justify-center items-end   gap-4 w-full ">
+          <div className="skeleton h-14 w-4"></div>
+          <div className="skeleton h-16 w-4"></div>
+          <div className="skeleton h-24 w-4"></div>
+          <div className="skeleton h-24 w-4"></div>
+          <div className="skeleton h-24 w-4"></div>
+          <div className="skeleton h-16 w-4"></div>
+          <div className="skeleton h-14 w-4"></div>
+        </div>
+      )}
     </div>
   );
 };
