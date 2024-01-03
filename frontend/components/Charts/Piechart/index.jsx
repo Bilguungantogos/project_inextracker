@@ -71,12 +71,12 @@ const Piechart = ({ categoryData }) => {
       </div>
       <div className="flex items-center py-8 px-6 gap-[47px]">
         <div className="w-[156px] h-[156px]">
-          {categoryData && <Doughnut options={options2} data={data2} />}
+          {/* {categoryData && <Doughnut options={options2} data={data2} />}
           {!categoryData && (
             <div className="flex justify-center items-center gap-4 w-full h-full">
               <div className="skeleton h-24 w-24 rounded-full"></div>
             </div>
-          )}
+          )} */}
         </div>
         <div className="flex flex-col w-full ml-4">
           {piedata.map((data) => {
