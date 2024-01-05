@@ -1,5 +1,5 @@
 const { sql } = require("../config/pgDb");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 const signup = async (req, res) => {
   try {
@@ -10,7 +10,7 @@ const signup = async (req, res) => {
       return res.status(400).json({ message: "User email is already exist" });
     }
     // const hashedPassword = bcrypt.hashSync(password, 10);
-    const hashedPassword = password;
+    const hashedPassword = bcrypt.hashSync(password, 10);
     const data =
       await sql`INSERT INTO users(email, name, password) VALUES(${email}, ${name}, ${hashedPassword}) RETURNING id`;
 
