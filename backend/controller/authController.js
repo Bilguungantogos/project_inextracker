@@ -1,5 +1,5 @@
 const { sql } = require("../config/pgDb");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 const signup = async (req, res) => {
   try {
@@ -9,7 +9,8 @@ const signup = async (req, res) => {
     if (findUser.length > 0) {
       return res.status(400).json({ message: "User email is already exist" });
     }
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    // const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = password;
     const data =
       await sql`INSERT INTO users(email, name, password) VALUES(${email}, ${name}, ${hashedPassword}) RETURNING id`;
 
@@ -18,17 +19,6 @@ const signup = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "failed" });
-  }
-};
-
-const addcategory = async (req, res) => {
-  try {
-    const { category_color, category_img } = req.body;
-    await sql`INSERT INTO usercategory(categoryColor, categoryImg) VALUES(${category_color},${category_img})`;
-    res.status(201).json({ message: "success" });
-  } catch (err) {
-    res.status(500).json({ message: "failed" });
-    console.log(err);
   }
 };
 
@@ -61,5 +51,4 @@ const signin = async (req, res) => {
 module.exports = {
   signup,
   signin,
-  addcategory,
 };
